@@ -137,7 +137,7 @@ jobs:
           mkdir -v -p build/mac
           godot -v --export "Mac OSX" ./build/mac/$EXPORT_NAME.zip
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: mac
           path: build/mac
