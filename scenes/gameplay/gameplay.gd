@@ -1,4 +1,4 @@
-extends Node2D
+extends Spatial
 
 var elapsed = 0
 
@@ -9,7 +9,7 @@ func pre_start(params):
   for key in params:
     var val = params[key]
     printt("", key, val)
-  $Sprite.position = Game.size / 2
+
   set_process(false)
 
 
@@ -21,8 +21,3 @@ func start():
     active_scene.name, " (", active_scene.filename, ")")
   set_process(true)
 
-
-func _process(delta):
-  elapsed += delta
-  $Sprite.position.x = Game.size.x / 2 + 150 * sin(2 * 0.4 * PI * elapsed)
-  $Sprite.position.y = Game.size.y / 2 + 100 * sin(2 * 0.2 *  PI * elapsed)

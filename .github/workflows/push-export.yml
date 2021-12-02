@@ -137,10 +137,10 @@ jobs:
           mkdir -v -p build/mac
           godot -v --export "Mac OSX" ./build/mac/$EXPORT_NAME.zip
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.2.0
         with:
           name: mac
-          path: build/mac
+          path: build/mac/
       - name: Zip Folder
         run: zip -r itch.zip build/mac
       - name: Deploy to itch.io

@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://scenes/terrain/particle_shader.tres" type="Shader" id=1]
+[ext_resource path="res://scenes/terrain/iceland.png" type="Texture" id=2]
+[ext_resource path="res://scenes/terrain/noise_texture.png" type="Texture" id=3]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/rows = 16.0
+shader_param/spacing = 1.0
+shader_param/direction = null
+shader_param/amplitude = 15.0
+shader_param/heightmap_size = Vector2( 300, 300 )
+shader_param/heightmap = ExtResource( 2 )
+shader_param/noisemap = ExtResource( 3 )
