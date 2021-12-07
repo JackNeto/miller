@@ -1,0 +1,45 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type spatial;
+render_mode cull_disabled, skip_vertex_transform, depth_draw_alpha_prepass;
+
+uniform vec4 start_color: hint_color = vec4(0, 0, 0, 1);
+uniform vec4 end_color: hint_color = vec4(1, 1, 1, 1);
+
+uniform float speed = 1.0;
+uniform float strength = 0.1;
+uniform float detail = 1.0;
+uniform vec2 direction = vec2(1.0, 0.0);
+uniform float heightOffset = 0.0;
+uniform float pivot = 1.0;
+
+float rand(vec2 co){
+  return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
+void vertex(){  
+  vec4 worldPos = WORLD_MATRIX * vec4(VERTEX, 1.0);
+  
+    //angle is scaled by 0.1 so that the fish only pivots and doesn't rotate all the way around
+  //pivot is a uniform float
+  float pivot_angle = rand(worldPos.xz) *0.4;
+  mat2 rotation_matrix = mat2(vec2(cos(pivot_angle), -sin(pivot_angle)), vec2(sin(pivot_angle), cos(pivot_angle)));
+  VERTEX.xz = rotation_matrix * VERTEX.xz;
+  
+
+
+  float time = TIME * speed + worldPos.x + worldPos.z;
+  float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, VERTEX.y - heightOffset);
+  vec2 dir = normalize(direction);
+  worldPos.xz += vec2(wind * dir.x, wind * dir.y);
+  
+  VERTEX = (INV_CAMERA_MATRIX * worldPos).xyz;
+  NORMAL = (MODELVIEW_MATRIX * vec4(NORMAL, 0.0)).xyz;
+}
+
+void fragment() {
+  vec4 outcolor = mix(start_color, end_color, UV.y); // mix between 2 colors
+  ALBEDO = outcolor.rgb;
+}
+"

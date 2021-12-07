@@ -2,12 +2,12 @@
 
 [ext_resource path="res://scenes/terrain/ground_shader.tres" type="Shader" id=1]
 [ext_resource path="res://scenes/terrain/iceland.png" type="Texture" id=2]
-[ext_resource path="res://scenes/terrain/materials/forest_ground_normal.png" type="Texture" id=3]
-[ext_resource path="res://scenes/terrain/materials/forest_ground_albedo.png" type="Texture" id=4]
+[ext_resource path="res://assets/materials/forest_ground_normal.png" type="Texture" id=3]
+[ext_resource path="res://assets/materials/forest_ground_albedo.png" type="Texture" id=4]
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/amplitude = 15.0
+shader_param/amplitude = 10.0
 shader_param/albedo = ExtResource( 4 )
 shader_param/normalmap = ExtResource( 3 )
 shader_param/heightmap = ExtResource( 2 )

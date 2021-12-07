@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://scenes/terrain/grass/grass_shader.tres" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/start_color = Color( 0.368627, 0.572549, 0.301961, 1 )
+shader_param/end_color = Color( 0.0509804, 0.0941176, 0.054902, 1 )
+shader_param/speed = 1.0
+shader_param/strength = 0.1
+shader_param/detail = 1.0
+shader_param/direction = Vector2( 1, 0 )
+shader_param/heightOffset = 0.0
+shader_param/pivot = 1.0
