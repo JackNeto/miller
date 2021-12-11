@@ -38,7 +38,6 @@ void vertex() {
 	local_pos.z += influence * sin(TIME * 1.5) / 8.0;
 	
 	VERTEX = local_pos.xyz;
-	NORMAL = vec3(0.0, 1.0, 0.0);
 }
 
 void fragment() {

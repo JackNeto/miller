@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/items/base_item/base_item.tscn" type="PackedScene" id=1]
+
+[node name="Stone" instance=ExtResource( 1 )]
+item_name = "Stone"

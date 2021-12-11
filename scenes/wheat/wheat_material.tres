@@ -6,7 +6,7 @@
 
 [resource]
 shader = ExtResource( 2 )
-shader_param/alpha_scissor_threshold = 0.784
+shader_param/alpha_scissor_threshold = 0.946
 shader_param/wind_direction = Vector2( 1, -0.5 )
 shader_param/wind_speed = 0.1
 shader_param/wind_strength = 0.2

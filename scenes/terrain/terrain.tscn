@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/terrain/grass/grass_straw.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://scenes/terrain/camera.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/terrain/ground_material.tres" type="Material" id=7]
 [ext_resource path="res://scenes/terrain/grass_particles.gd" type="Script" id=8]
 [ext_resource path="res://scenes/terrain/grass/grass_material.tres" type="Material" id=9]
+[ext_resource path="res://scenes/wheat/wheat.mesh" type="ArrayMesh" id=10]
 
 [sub_resource type="ArrayMesh" id=1]
 
@@ -48,13 +49,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.76837e-07, -5 )
 [node name="GrassParticles" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.63314, 3.811, -5.66333 )
 material_override = ExtResource( 5 )
-amount = 242
+amount = 100
 explosiveness = 1.0
 local_coords = false
 process_material = ExtResource( 4 )
-draw_pass_1 = ExtResource( 3 )
+draw_pass_1 = ExtResource( 10 )
 script = ExtResource( 8 )
-rows = 200
 
 [node name="Ground" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )
