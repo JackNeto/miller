@@ -1,0 +1,8 @@
+{
+	"contains_albedo": true,
+	"resolution": 1024,
+	"src": {
+		"a": "res://assets/materials/forest_ground_depth.png",
+		"rgb": "res://assets/materials/forest_ground_albedo.png"
+	}
+}

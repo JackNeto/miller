@@ -6,7 +6,14 @@
 panorama = ExtResource( 1 )
 
 [resource]
-background_mode = 2
+background_mode = 3
 background_sky = SubResource( 1 )
+background_color = Color( 0.479362, 0.88393, 0.964844, 1 )
 ambient_light_energy = 0.99
-tonemap_mode = 2
+ssao_radius = 0.5
+ssao_radius2 = 0.25
+ssao_intensity2 = 2.0
+ssao_light_affect = 0.5
+ssao_quality = 2
+ssao_edge_sharpness = 32.0
+dof_blur_far_distance = 100.0

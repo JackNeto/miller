@@ -4,7 +4,7 @@
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 1 )
-shader_param/border_width = 0.073
+shader_param/border_width = 0.1
 shader_param/color = Color( 1, 1, 0.996078, 1 )
 shader_param/pattern = true
 shader_param/line_number = 0.0

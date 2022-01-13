@@ -1,0 +1,8 @@
+{
+	"contains_albedo": false,
+	"resolution": 1024,
+	"src": {
+		"a": "#ffffffff",
+		"rgb": "res://assets/textures/ground/ground_normal.png"
+	}
+}

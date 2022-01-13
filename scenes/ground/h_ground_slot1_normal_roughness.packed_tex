@@ -1,0 +1,8 @@
+{
+	"contains_albedo": false,
+	"resolution": 1024,
+	"src": {
+		"a": "#ffffffff",
+		"rgb": "res://assets/textures/sand_stone_texture_3-1K/1K-stone_wall_3-normal.jpg"
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"contains_albedo": true,
+	"resolution": 1024,
+	"src": {
+		"a": "res://assets/textures/ground/ground_depth.png",
+		"rgb": "res://assets/textures/ground/ground_albedo.png"
+	}
+}

@@ -1,37 +1,116 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/player/player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/player/y-bot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/player/RayCast.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
 
-[sub_resource type="CapsuleMesh" id=2]
-radius = 0.5
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "carry-loop"
 
-[sub_resource type="PrismMesh" id=3]
+[sub_resource type="AnimationNodeBlend2" id=18]
+filter_enabled = true
+filters = [ "game-rig/Skeleton:DEF-forearm.R", "game-rig/Skeleton:DEF-forearm.R.001", "game-rig/Skeleton:DEF-shoulder.R", "game-rig/Skeleton:DEF-upper_arm.R", "game-rig/Skeleton:DEF-upper_arm.R.001", "rig_deform/Skeleton:DEF-f_index.01.R", "rig_deform/Skeleton:DEF-f_index.02.R", "rig_deform/Skeleton:DEF-f_index.03.R", "rig_deform/Skeleton:DEF-f_middle.01.R", "rig_deform/Skeleton:DEF-f_middle.02.R", "rig_deform/Skeleton:DEF-f_middle.03.R", "rig_deform/Skeleton:DEF-f_pinky.01.R", "rig_deform/Skeleton:DEF-f_pinky.02.R", "rig_deform/Skeleton:DEF-f_pinky.03.R", "rig_deform/Skeleton:DEF-f_ring.01.R", "rig_deform/Skeleton:DEF-f_ring.02.R", "rig_deform/Skeleton:DEF-f_ring.03.R", "rig_deform/Skeleton:DEF-forearm.R", "rig_deform/Skeleton:DEF-forearm.R.001", "rig_deform/Skeleton:DEF-hand.R", "rig_deform/Skeleton:DEF-upper_arm.R", "rig_deform/Skeleton:DEF-upper_arm.R.001" ]
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "jog-forward-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "iddle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "jog-back-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "jog-strafe-right-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "jog-strafe-left-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "jog-forward-diag-right-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "jog-forward-diag-left-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "jog-back-diag-right-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "jog-back-diag-left-loop"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=30]
+blend_point_0/node = SubResource( 21 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 22 )
+blend_point_1/pos = Vector2( 0, 0 )
+blend_point_2/node = SubResource( 23 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 24 )
+blend_point_3/pos = Vector2( 1, 0 )
+blend_point_4/node = SubResource( 25 )
+blend_point_4/pos = Vector2( -1, 0 )
+blend_point_5/node = SubResource( 26 )
+blend_point_5/pos = Vector2( 1, 1 )
+blend_point_6/node = SubResource( 27 )
+blend_point_6/pos = Vector2( -1, 1 )
+blend_point_7/node = SubResource( 28 )
+blend_point_7/pos = Vector2( 1, -1 )
+blend_point_8/node = SubResource( 29 )
+blend_point_8/pos = Vector2( -1, -1 )
+
+[sub_resource type="AnimationNodeBlendTree" id=5]
+graph_offset = Vector2( 16, 41.7207 )
+nodes/Animation/node = SubResource( 20 )
+nodes/Animation/position = Vector2( 120, 230 )
+nodes/carry_blend/node = SubResource( 18 )
+nodes/carry_blend/position = Vector2( 390, 140 )
+nodes/jog_blend/node = SubResource( 30 )
+nodes/jog_blend/position = Vector2( 110, 50 )
+nodes/output/position = Vector2( 590, 120 )
+node_connections = [ "carry_blend", 0, "jog_blend", "carry_blend", 1, "Animation", "output", 0, "carry_blend" ]
 
 [node name="Player" type="KinematicBody"]
 collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.00703, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.999711, 0 )
 shape = SubResource( 1 )
-
-[node name="Character" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.01331, 0 )
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="MeshInstance" type="MeshInstance" parent="Character"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.515, 0.39 )
-mesh = SubResource( 3 )
-material/0 = null
 
 [node name="CameraPivot" type="Spatial" parent="."]
 
 [node name="CameraBoom" type="SpringArm" parent="CameraPivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-spring_length = 5.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+spring_length = 3.0
+margin = 0.2
 
 [node name="Camera" type="Camera" parent="CameraPivot/CameraBoom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.346872, 0 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 5 )
+anim_player = NodePath("../YBot/AnimationPlayer")
+parameters/carry_blend/blend_amount = 1.0
+parameters/jog_blend/blend_position = Vector2( 0, 0 )
+
+[node name="YBot" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="RightHandToolAttachment" type="BoneAttachment" parent="YBot/game-rig/Skeleton" index="2"]
+transform = Transform( -0.974327, -0.211832, -0.0762512, 0.203067, -0.97312, 0.108643, -0.0972157, 0.0903701, 0.991152, -0.293704, 0.987745, -0.0918329 )
+bone_name = "DEF-hand.R"
+
+[node name="ScythePosition" type="Spatial" parent="YBot/game-rig/Skeleton/RightHandToolAttachment"]
+transform = Transform( -0.119898, -0.0531719, 0.991361, 0.99205, 0.032014, 0.121698, -0.0382084, 0.998071, 0.048911, -0.0282932, 0.122687, 0.0109916 )
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05347, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -2 )
+collide_with_areas = true
+script = ExtResource( 3 )
+
+[editable path="YBot"]

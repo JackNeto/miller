@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/items/base_item/base_item.gd" type="Script" id=1]
 
@@ -6,7 +6,10 @@
 size = Vector3( 0.5, 0.5, 0.5 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 2, 2, 2 )
+extents = Vector3( 1, 2, 1 )
+
+[sub_resource type="ViewportTexture" id=3]
+viewport_path = NodePath("ItemLabel/Viewport")
 
 [node name="BaseItem" type="Area"]
 script = ExtResource( 1 )
@@ -17,6 +20,27 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 2 )
+
+[node name="LabelContainer" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499838, 0 )
+
+[node name="Viewport" type="Viewport" parent="LabelContainer"]
+size = Vector2( 300, 25 )
+transparent_bg = true
+
+[node name="Label" type="Label" parent="LabelContainer/Viewport"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "cxzczxcz"
+align = 1
+valign = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="LabelContainer"]
+cast_shadow = 0
+flip_v = true
+billboard = 1
+texture = SubResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

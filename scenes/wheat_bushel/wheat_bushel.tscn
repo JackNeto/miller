@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/wheat_bushel/wheat_bushel_Plane010.tres" type="ArrayMesh" id=1]
+
+[node name="WheatBushel" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 0.894576, 0, 0.446916, 0, 1, 0, -0.446916, 0, 0.894576, 0, 0, 0.195505 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 0.493016, 0, -0.87002, 0, 1, 0, 0.87002, 0, 0.493016, 0, 0, -0.210882 )
+mesh = ExtResource( 1 )
+material/0 = null

@@ -1,0 +1,8 @@
+{
+	"contains_albedo": true,
+	"resolution": 1024,
+	"src": {
+		"a": "res://assets/textures/sand_stone_texture_3-1K/1K-stone_wall_3-displacement.jpg",
+		"rgb": "res://assets/textures/sand_stone_texture_3-1K/1K-stone_wall_3-diffuse.jpg"
+	}
+}
